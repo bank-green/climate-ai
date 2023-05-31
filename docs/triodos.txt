@@ -1,0 +1,619 @@
+Our approach to
+Sustainability
+Version 10 March 2021
+
+TLIM
+1 Triodos Investment Management Our approach to Sustainability · Version 10 March 2021
+
+1. Purpose
+At Triodos Investment Management (“Triodos IM”), we believe how we invest defines the world we want to
+live in, recognising the instrumental role and creative power of capital when used consciously. As a financial
+institution, we use money as a driving force towards a society and economy that is humane, ecologically
+balanced and works for the benefit of all. For more than 30 years, we have offered impact investment
+solutions that connect investors who want to make money work for positive change with innovative
+entrepreneurs and sustainable businesses doing just that.
+This document explains the Triodos approach to sustainability, including sustainability risks, as required
+in article 3 of the European Sustainable Finance Disclosure Regulation (SFDR). As Triodos IM’s approach
+to sustainability goes beyond article 3 of the SFDR, we elaborate how we have integrated sustainability in
+every step of our investment process, throughout our organisation and how we manage sustainability risks.
+
+2 Triodos Investment Management Our approach to Sustainability · Version 10 March 2021
+
+2. Introduction to this document and definitions
+2.1
+
+This document
+This document contains the following:
+• Section 1: Purpose
+• Section 2: Introduction to this document and definitions
+- 2.1 This document
+- 2.2 Definitions
+• Section 3: Who are we
+• Section 4: Our Business Principles
+• Section 5: Our approach to Sustainability
+• Section 6: Inside Out lens: Sustainability Impact
+- 6.1 Optimise positive impact
+- 6.2 Minimise negative impact
+• Section 7: Outside In lens: Impact of sustainability factors
+- 7.1 Sustainability risks
+• Section 8: Our investment process
+- 8.1 Impact Equities & Bond
+- 8.2 Impact Private Debt & Equity
+• Section 9: Our Risk Management Framework
+- 9.1 Three lines of defence
+- 9.2 Risk Taxonomy Framework
+- 9.3 Assessment of sustainability risks
+
+2.2 Definitions
+For this document, the following definitions apply:
+• ‘SFDR’ – Regulation (EU) 2019/2088 of the European Parliament and of the Council of 27 November 2019
+on sustainability-related disclosures in the financial services sector, as amended from time to time;
+• ‘Taxonomy’ – Regulation (EU) 2020/852 of the European Parliament and of the Council of 18 June 2020 on
+the establishment of a framework to facilitate sustainable investment, as amended from time to time;
+• ‘sustainable investment’ means an investment in an economic activity that contributes to an
+environmental objective, as measured, for example, by key resource efficiency indicators on the use of
+energy, renewable energy, raw materials, water and land, on the production of waste, and greenhouse
+gas emissions, or on its impact on biodiversity and the circular economy, or an investment in an economic
+activity that contributes to a social objective, in particular an investment that contributes to tackling
+inequality or that fosters social cohesion, social integration and labour relations, or an investment in
+human capital or economically or socially disadvantaged communities, provided that such investments
+do not significantly harm any of those objectives and that the investee companies follow good governance
+practices, in particular with respect to sound management structures, employee relations, remuneration
+of staff and tax compliance, as in article 2 (17) SFDR;
+• ‘sustainability factors’ means environmental, social and employee matters, respect for human rights,
+anti-corruption and anti-bribery matters, as in article 2 (24) SFDR;
+• ‘sustainability risk’ means an environmental, social or governance event or condition that, if it occurs,
+could cause an actual or potential material negative impact on the value of the investment, as in article 2
+(22) SFDR;
+• ‘physical/societal risks’: a physical or societal event or condition that could cause an actual or a
+potential material negative impact on the value of the investment because of damage, supply chain/social
+disruption, availability of resources (sick leave, depletion of natural resources), etc. These risks can occur
+event-driven (acute) or because of longer-term shifts in patterns (chronic);
+• ‘transition risks’: risks resulting from required/desired changes from a societal perspective. This could
+occur because of policy or legal changes (including litigation claims), technology developments, market
+shifts or reputation issues because of changing customer or community perception;
+• ‘Inside Out’: the impact of our organisation and investments on the sustainability factors as in the outside
+world;
+
+3 Triodos Investment Management Our approach to Sustainability · Version 10 March 2021
+
+• ‘Outside In’: the impact of sustainability factors as in the outside world on our organisation and
+investments;
+• ‘impact’: the effect that our organisation and investments have on the sustainability factors as in the
+outside world;
+• ‘positive impact’: impact that contributes to a society that is humane, ecologically balanced and works
+for the benefit of all;
+• ‘negative impact’: impact that opposes a society that is humane, ecologically balanced and works for the
+benefit of all
+• ‘Triodos Investment Management’ or ‘Triodos IM’: Triodos Investment Management B.V., a private limited
+liability company incorporated in the Netherlands, with its registered office at Nieuweroordweg 1,
+NL-3704-EC Zeist, the Netherlands, and licensed as (UCITS) Management Company as well as Alternative
+Investment Fund Manager (AIFM) by the Dutch Authority for the Financial Markets (AFM);
+• ‘funds’: the collective investment funds (UCITS or AIFs) managed by Triodos IM
+
+4 Triodos Investment Management Our approach to Sustainability · Version 10 March 2021
+
+3. Who we are
+Triodos IM is a globally active impact investor. Our mission is
+to make money work for positive change, while generating a
+balanced return. We manage direct investments in areas such
+as renewable energy, organic food and microfinance. We also
+invest in listed securities of companies and bond issuers that
+contribute to a transition to a more sustainable economy.
+
+Impact
+
+Triodos IM is part of Triodos Bank NV (“Triodos Bank”), one of
+the leading sustainable banks in the world and the co-founder
+of the Global Alliance for Banking on Values (GABV). All
+investment strategies and all assets under management
+actively engage for positive change in society, combined with
+a financial return.
+Triodos IM’s investment philosophy is based on the belief
+that in the long term, the most successful businesses will
+be those that achieve the right balance between their social,
+environmental and economic performance, balancing risk,
+return and impact.
+
+Impact
+investing
+
+Return
+
+More information about Triodos IM is available on: https://www.triodos-im.com/about-us
+
+5 Triodos Investment Management Our approach to Sustainability · Version 10 March 2021
+
+Risk
+
+4. Our Business Principles
+In addition to the broad vision that underpins our business, we have a number of Business Principles that
+guide and support our day-to-day decision-making. We are dedicated to making a positive impact on the
+world and to lead by example. The business ethics and values are described in our Business Principles, see:
+https://www.triodos.com/governance#principles
+The following Business Principles, Triodos IM is committed to, specifically relate to sustainability:
+• Promoting sustainable development: considering the social, environmental and financial impacts of
+everything we do;
+• Respecting human rights: respecting the rights of individuals, and within different societies and cultures,
+supporting the aims of the United Nation’s Universal Declaration of Human Rights;
+• Respecting the environment: doing all we can to create and encourage positive environmental impacts.
+
+6 Triodos Investment Management Our approach to Sustainability · Version 10 March 2021
+
+5. Our approach to Sustainability
+To adhere to our mission of making money work for positive change, while generating a balanced return, we
+separate two sustainability impact lenses:
+• Inside Out: the impact of our organisation and investments on the sustainability factors as in the outside
+world, resulting in positive or negative impact (see Section 6)
+• Outside In: the impact of sustainability factors as in the outside world on our organisation and
+investments, resulting in sustainability risks such as physical/societal and transition risks (see Section 7)
+Triodos IM approach to Sustainability
+
+Positive & negative
+impact
+Inside Out
+Investments
+
+Sustainability
+factors in the
+outside world
+Outside In
+
+Physical/societal
+& transition risks
+
+7 Triodos Investment Management Our approach to Sustainability · Version 10 March 2021
+
+6. Inside Out lens: Our Sustainability Impact
+Our mission is to make money work for positive societal and environmental change. All investments made by
+Triodos IM are carefully screened on sustainability factors and are linked to positive investment impacts and
+indicators to ensure that our investments contribute to positive change.
+Triodos IM has published its ‘Principal Adverse Sustainability Impacts Statement’ (‘Statement’) on the
+Triodos IM website, as required by article 4 of the SFDR. The Statement provides information on the principal
+sustainability indicators Triodos IM considers in its investment decisions.
+As Triodos IM’s approach to sustainability impact is broader than the Statement, we apply the “inside-out
+lens” in order to elaborate on the actual investment process that Triodos IM applies to its investments. We
+explain how we optimise positive impact and minimise negative impact.
+
+6.1
+
+Optimise positive impact
+We have developed a wide range of investment products to give investors the opportunity to build a portfolio
+across all asset classes where 100% of the assets can be committed to positive social and/or environmental
+impact. To explain our approach to optimise positive impact, we distinguish between two sets of investment
+products that Triodos IM manages:
+• Impact Equities & Bonds: Triodos IM invests in listed securities of companies and bond issuers that
+contribute to a transition to a more sustainable economy.
+• Impact Private Debt & Equity: Triodos IM invests in private sustainable companies and projects across
+the themes Energy and Climate, Sustainable Food and Agriculture and Financial Inclusion.
+Impact Equities & Bonds
+As an investor in global listed securities, Triodos IM aims to serve as a catalyst in the transition to a
+sustainable economy and society. We have defined and invest in seven themes that are instrumental
+in the transition toward a sustainable economy. Therefore, the themes are very much aligned to the UN
+Sustainable Development Goals (SDGs). Our themes have been derived from global mega-trends that we
+believe will shape the future. The seven transition teams are presented in the figure below. We generate
+positive impact by investing in listed companies that support sustainable solutions and by being active
+stewards of the planet and society. We elaborate on impact investing through listed equities and bonds in a
+separate whitepaper.
+
+Seven transition themes of Impact Equities & Bonds
+
+8 Triodos Investment Management Our approach to Sustainability · Version 10 March 2021
+
+Triodos IM’s in-house research guides this process by developing comprehensive opinions of each individual
+company’s long-term commitment to sustainability and material contribution to the transition themes.
+More information about how sustainability factors are integrated in the investment process of our listed
+investments is available in The Triodos approach to investments on stock and bond markets.
+Impact Private Debt & Equity
+Access to private debt and equity instruments is key for entrepreneurs and businesses to enable
+them to add and create real value that benefits society as a whole. Within our Impact Private Debt &
+Equity activities, we manage investment funds across three strategic investment themes. We provide
+entrepreneurs and businesses with capital, expertise and the network to create positive impact within these
+themes, which are presented in the next overview.
+
+Energy and Climate
+Transforming the energy
+system and lower carbon
+emissions
+Impact Private Debt & Equity
+
+Financial inclusion
+Bringing people into the
+financial system and providing
+access to basic needs
+Impact Private Debt & Equity
+
+Sustainable Food and Agriculture
+Creating an ecologically
+and socially sound food
+and agricultural system
+Impact Private Debt & Equity
+
+We provide investors with opportunities to invest directly in
+the energy transition and system transformation through
+funds that finance renewable energy, stimulate more
+efficient use, and improve access to energy. All of which aim
+to ensure an affordable and reliable supply of clean energy.
+For more information read our vision paper ‘Towards a low
+carbon economy’.
+
+We finance values-based organisations in Asia, Africa,
+Latin America and Eastern Europe that use financial
+services to deliver sustainable economic, social and
+environmental development, thereby serving the real
+economy and meeting the needs of underserved
+populations.
+
+We aim to accelerate the transition to a sustainable food and
+agricultural system that produces healthy food for all, while
+respecting the limits of our planet and paying farmers fairly.
+Our investment funds offer a range of financial instruments
+to companies active across the international supply chain
+that demonstrate a deep-rooted commitment to
+environmental and social performance. For more information
+read our vision paper ‘Towards an ecologically and socially
+resilient food system’.
+
+6.2 Minimise negative impact
+As a ‘pure play’ impact investor, we exclusively provide investment solutions that address social and
+environmental challenges and contribute to positive change. However, some of the resources, practices,
+and products that companies use, execute, manufacture or sell, are irreconcilable with our positive
+impact ambitions and our values. To assure that investments are aligned with Triodos IM’ values and to
+minimise potential negative impact, Triodos IM applies strict Minimum Standards to its investments (either
+directly or integrated in a fund-specific policy / procedure). These Triodos Minimum Standards (‘Minimum
+Standards’) are designed to ensure that companies and/or projects are excluded when they significantly
+harm environmental and/or social objectives and/or do not follow good governance practices, which Triodos
+IM defines as:
+
+9 Triodos Investment Management Our approach to Sustainability · Version 10 March 2021
+
+• hamper human dignity and deny people’s quality of life
+• jeopardize a sustainable society with respect to the animal world and environment
+• violate good corporate governance structures.
+Please read our ‘Triodos Minimum Standards’ for details of the products, processes and the precautionary
+principles.
+Since Triodos IM considers principal adverse impacts of its investment decisions on sustainability factors,
+Triodos IM has published its ‘Principal Adverse Sustainability Impacts Statement’ (‘Statement’) on the
+Triodos IM website.
+
+10
+
+Triodos Investment Management Our approach to Sustainability · Version 10 March 2021
+
+7. Outside In: Impact of sustainability factors and risks
+Beyond minimising negative impact and optimizing positive impact, Triodos IM also assesses the impact
+of sustainability factors as in the outside world on our organisation and investments, resulting in potential
+sustainability risks such as physical/societal and transition risks. All investments made by Triodos IM
+are carefully screened against relevant sustainability factors, and include as such an assessment on the
+relevant sustainability risks.
+The inside-out and outside-in approach are interlinked: both the positive selection approach and the use
+of Minimum Standards minimise the risk of potential environmental, social or governance (ESG) events
+or conditions that may cause an actual or a potential materially negative impact on the value of the
+investments (so-called sustainability risks). Therefore, we believe that the likely impact of sustainability
+risks on the returns of Triodos’ investments is limited. It is our conviction that in the long-term sustainable
+investments offer more stable and higher risk-adjusted financial returns than non-sustainable investments.
+However, sustainability risks are complex and can occur in a manner that cannot reasonably be anticipated
+by Triodos IM, resulting in an unforeseen actual or potential material negative impact on the value of an
+investment.
+
+7.1
+
+Sustainability risks
+To define relevant environmental, social and governance events or conditions which could cause a potential
+material impact on the value of the investment, Triodos IM uses sustainability (ESG) factors that could
+result in these sustainability risks, as in either physical/societal risks or transition risks. With physical/
+societal risks we mean a physical or societal event or condition that could cause an actual or a potential
+material negative impact on the value of the investment because of damage, supply chain/social disruption,
+availability of resources (sick leave, depletion of natural resources), etc. These risks can occur event-driven
+(acute) or because of longer-term shifts in patterns (chronic). Transition risks are risks resulting from
+required/desired changes from a societal perspective. This could occur because of policy or legal changes
+(including litigation claims), technological developments, market shifts or reputation issues because of
+changing customer or community perception. The sustainability (ESG) factors that Triodos IM currently
+considers are:
+
+Environment
+
+Social
+
+Governance
+
+Climate change
+
+Human rights
+
+Business ethics
+
+Biodiversity
+
+Labour practices
+
+Natural resources
+
+(Data) privacy
+
+Corruption & political
+instability
+
+Pollution & waste
+
+Diversity & inclusion
+
+Animals
+
+Inequality
+
+Fair taxes
+
+Health & safety
+
+It should be noted that for different strategies and assets, sustainability factors differ in terms of relevance.
+Evidently, sustainability risks can vary from investment to investment, as can the impact of a sustainability
+risks on the return of that investment. Within the governance of risk management, the assessment of
+sustainability risks in the investment process lies primarily in the first line of defence, being the fund- and
+investment managers.
+
+11 Triodos Investment Management Our approach to Sustainability · Version 10 March 2021
+
+8. Our investment decision-making process
+This section provides information on how sustainability risks are integrated in the investment
+decision-making processes. For each investment strategy Triodos IM uses a tailored approach. We separate
+the investment decision making process for Impact Equities & Bonds and Impact Private Debt & Equity.
+Before we describe the investment process of IE&B and IPD&E we first describe the general starting points
+of our investment process.
+It is our conviction that in the long term, sustainable investments offer more stable returns than
+non-sustainable investments. All investments are aimed to be allocated to sustainable investments. All
+investments are monitored for compliance to the positive selection and the negative screening criteria (as
+described in Section 6) to make sure they do not significantly harm the sustainable investment objective of
+the funds. In case of concerns, dialogue will be initiated and if this is deemed unsuccessful the relationship
+may be discontinued.
+Applying both the positive selection and the negative screening criteria also comprise assesssing and
+minimising risks of potential environmental, social or governance events or conditions that may cause an
+actual or a potential material negative impact on the value of the investments (so-called sustainability
+risks).
+However, sustainability risks are complex and require subjective judgement. A comprehensive assessment
+of sustainability risks requires a judgement call on both the qualitative measures a company has taken as
+well as on its quantitative measures. To the extent that a sustainability risk occurs, or occurs in a manner
+that cannot reasonably be anticipated by the Fund Manager, there may be an unforeseen actual or potential
+material negative impact on the value of an investment, hence on the Net Asset Value of the fund. We
+believe that the likely impact of sustainability risks on the returns of the fund is limited, given the integrated
+assessment of sustainability risks in our investment process.
+
+8.1
+
+Impact Equities & Bonds
+Embedding sustainability in the Impact Equities & Bonds Funds’ investment process consists of the
+following steps:
+Sustainability
+analysis of the
+company
+
+Integrated
+analysis
+
+Investment
+decision &
+Portfolio
+construction
+
+Engagement &
+Monitoring
+
+Reporting
+
+Sustainability analysis of the company
+The mission and strategy of the company is screened to ensure it contributes to one or more of the transition
+themes and that it meets our strict Minimum Standards.
+Triodos IM applies two sustainability selection approaches in assessing potential investees which includes
+assessment on relevant sustainability risks:
+• Step 1: Positive screening: potential investees are screened to align with the positive impact goals of the
+fund, taking relevant sustainability indicators into account.
+• Step 2: Negative screening: to ensure that the fund does not finance companies or projects that are
+engaged in harmful activities, in addition to the positive screening, companies also have to pass the
+negative screening. The negative screening entails applying the Triodos Minimum Standards.
+Potential investments that do not comply with the investment criteria as stated in step 1 and 2 are excluded.
+Both the positive selection and the negative screening criteria minimise the risk of potential environmental,
+social or governance events or conditions that may cause an actual or a potential material negative impact
+on the value of the investments (so-called sustainability risks).
+
+12 Triodos Investment Management Our approach to Sustainability · Version 10 March 2021
+
+Integrated analysis
+Companies that comply with the investment criteria undergo an integrated financial and sustainability
+analysis. The analysis focuses on impact, sustainability and materiality. In this process we identify a
+company’s financial value drivers and evaluate/model the interplay between financials and sustainability.
+Investment decision & Portfolio construction
+The actual portfolio construction is based on a comprehensive risk and return analysis. Based on a
+long-term investment horizon, our investment approach results in concentrated portfolios with a low
+turnover. Weights are a function of factors such as upside potential (valuation), earnings and stock price
+momentum, portfolio manager conviction, liquidity, risk, requirements & limits etc.
+Engagement & Monitoring
+Companies eligible for investment are carefully monitored to ensure that they continue to meet our
+investment criteria, also on sustainability indicators which includes assessment on sustainability risks.
+Engagement with investee companies is one of the cornerstones of our investment strategy. It includes an
+active dialogue with companies, voting for change and shareholder collaboration.
+Reporting
+To live up its commitment as a responsible and transparent investor, Triodos IM regularly publishes
+information on the funds’ investment activities in monthly, quarterly and annual reports. In order to measure
+the attainment of its sustainable investment objective, the funds report on impact indicators.
+
+8.2 Impact Private Debt & Equity
+Embedding sustainability in the Impact Private Debt & Equity Funds’ investment process consists of the
+following steps:
+Deal sourcing
+& Screening
+
+Due diligence
+
+Investment
+decision
+
+Signing &
+Closing
+
+Monitoring
+
+Reporting
+
+Deal sourcing & Screening
+The mission and strategy of the potential investees is screened to ensure alignment with the vision
+and mission of the fund. All investments are assessed on an individual basis. Triodos IM applies two
+sustainability selection approaches in assessing potential investees which includes assessment on relevant
+sustainability risks:
+• Step 1: Positive screening: potential investees are screened to align with the positive impact goals of the
+fund, taking relevant sustainability indicators into account.
+• Step 2: Negative screening: to ensure that the fund does not finance companies or projects that are
+engaged in harmful activities, in addition to the positive screening, companies also have to pass the
+negative screening. The negative screening entails applying the Triodos Minimum Standards, either
+directly or integrated in a fund-specific policy. When adherence to the Minimum Standards does not
+logically follow from the defined investment scope in the positive screening of the funds, the principles of
+the Minimum Standards are applied as per the discretion of Triodos IM as fund manager.
+Potential investments that do not comply with the investment criteria as stated in step 1 and 2 are excluded.
+Both the positive selection and the negative screening criteria minimise the risk of potential environmental,
+social or governance events or conditions that may cause an actual or a potential material negative impact
+on the value of the investments (so-called sustainability risks).
+
+13 Triodos Investment Management Our approach to Sustainability · Version 10 March 2021
+
+Due diligence
+Triodos IM performs an in-depth and risk-based analysis (including relevant sustainability risks) of the
+potential investee during the due diligence phase, preferably on-site. In addition to financial and risk
+analysis, the sustainability approach of the potential investee is assessed.
+Investment decision
+The investment decision of the Fund Management is based on a thorough assessment of the due diligence’s
+findings and analyses of the investee’s financial, risk and sustainability performance aspects.
+Signing & Closing
+Inclusion in and adherence to certain fund-specific sustainability standards and/or exclusion lists is
+standard part of documentation (e.g. loan agreements, shareholder agreements).
+Monitoring
+Investees report on impact indicators on a regular basis, together with their financials. The impact
+indicators relate to the type of products or services offered, the sectors in which the investees are active,
+and certain criteria from the negative screening (e.g. for our financial inclusion funds, we monitor exposure
+to sensitive sectors).
+Reporting
+To live up its commitment as a responsible and transparent investor, Triodos IM regularly publishes
+information on the funds’ investment activities in quarterly and annual reports. In order to measure the
+attainment of its sustainable investment objective, the funds report on impact indicators.
+
+14 Triodos Investment Management Our approach to Sustainability · Version 10 March 2021
+
+9. Our Risk Management framework
+Our investment teams evaluate companies and projects through an Impact-Risk-Return lens. Just as we
+assess prospective investments for the risk that it is not able to achieve its expected financial return,
+we also assess whether the investment is able to achieve its expected positive impact. The inclusion of
+sustainability (ESG) factors into our investment process enables us to effectively assess and evaluate risks
+and opportunities beyond traditional risk management procedures.
+
+9.1
+
+Three lines of defence
+Triodos IM manages its funds using a three lines of defence model. This way of working ensures that
+co-workers in all functions within the organisation need to be fully aware of their responsibilities in the
+management of risk, whether they operate in a commercial, an operational or a control role. It ensures a
+segregating of responsibilities, and the realization that all co-workers have a role to play in managing the
+risk of Triodos IM funds. The following structure is applied:
+• 1st line: risk management is a primary task for the first line of defence and is integrally implemented in
+the day-to-day business (business owners). Controls that are implemented in the organisation are part
+of the first line. For fund management activities, this implies the setting of risk limits in line with the risk
+management policies, maintaining these limits, and managing potential breaches.
+• 2nd line: a second line of defence is tasked with: (i) setting and implementing policies regarding
+risk management, (ii) acting as an advisor to the organisation on topics that are risk related, and (iii)
+monitoring the effective management of risks. The second line of defence is organized independently
+from the first line to prevent potential conflicts of interests.
+• 3rd line: Triodos Group Audit is responsible to test whether the risk management process in the first and
+second line operates effectively and whether the interaction between first and second line is according to
+standards.
+
+9.2 Risk Taxonomy Framework
+Within our Risk Taxonomy Framework, we identify risk categories and risk types as shown in the overview
+below. Given the importance of sustainability risks on financial risks and in alignment with the AIFMD and
+UCITSD, we have included sustainability risk as one of the financial risks in our Risk Taxonomy.
+Triodos Risk Taxonomy Framework
+
+Overview
+of Risks
+
+Risk
+Categories
+
+Risk Types
+
+Enterprise
+Risk
+
+Strategic
+Risk
+
+Reputational
+Risk
+
+NonFinancial
+Risk
+
+Operational
+Risk
+
+Compliance
+Risk
+
+Financial
+Risk
+
+Credit
+Risk
+
+Liquidity
+Risk
+
+Market
+Risk
+
+15 Triodos Investment Management Our approach to Sustainability · Version 10 March 2021
+
+Sustainability
+Risk
+
+The Impact & Financial Risk Committee (IFRC) is mandated with the governance of all financial risks,
+including sustainability risks as indicated in the Risk Taxonomy Framework. In the IFRC both the impact
+and the financial risks of investment funds are discussed and taken into account in the monitoring and
+decision-making process.
+
+9.3 Assessment of sustainability risks
+The assessment of sustainability risks in the investment process (as described in chapter 8) lies primarily in
+the first line of defence. The sustainability factors and risk types mentioned in chapter 7 serve as a guidance
+to the first line of defence to perform a risk-based assessment of the individual investment. It should be
+noted that for different strategies and assets, sustainability factors can differ in relevance. Evidently,
+sustainability risks can vary from investment to investment, as can the impact of a sustainability risk on the
+return of that investment. Not all factors and risk types are necessarily assessed for each investment; it is
+up to the discretion of the first line of defence to assess those that are deemed most relevant.
+
+16 Triodos Investment Management Our approach to Sustainability · Version 10 March 2021
+
+Disclaimer
+The Triodos sustainability documents are developed for proprietary use. Third parties or stakeholders
+have no right to rely on our documents, nor do we accept any duty of care or liability in relation to our
+interpretation and application of them. In particular, it is important to understand that, while Triodos IM
+seeks to ensure that customers / investment companies meet these documents, it has no control over the
+actions of its customers / investment companies. Nevertheless, if we discover that a customer/ investment
+company is outside our policies, we will request that it remedies the situation within reasonable time and we
+will close the relationship unless satisfactory action is taken. In this process, Triodos IM uses independent
+information where available but also uses its judgment as necessary.
+The information in this 10th March 2021 version of ‘Triodos approach to Sustainability’ was developed
+in view of compliance with the SFDR requirements as applicable as of 10th March 2021, which are the
+requirements of Regulation EU/2019/2088 itself (Level 1). It should be noted that (draft) requirements as in
+the final RTS for Level 2, which were recently published on the 2nd February 2021, are not yet incorporated in
+this version – but will be incorporated in (a) next version(s) of this document if and when these requirements
+are finalised and become applicable.
+
+Triodos Investment Management
+Landgoed De Reehorst
+Hoofdstraat 10
+3972 LA Driebergen-Rijsenburg
+The Netherlands
+Tel: +31 (0) 30 693 65 00
+
+TLIM
+#### ####
+
+17 Triodos Investment Management Our approach to Sustainability · Version 10 March 2021
+
+
