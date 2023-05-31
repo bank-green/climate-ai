@@ -17,13 +17,13 @@ python cli.py query --bank triodos --query 'Does this bank give loans to coal-fi
 Goal: Database
 -------------
 
-## Texts
+### Texts
 `id      human_name  parsed_text     file`
 
-# Embeddings
+### Embeddings
 `id      text_id     chunk_text      vector`   
 
-# Queries
+### Queries
 This Table does not exist yet.
 `id      query       chunk_ids       llm_answer  human_answer`
 
