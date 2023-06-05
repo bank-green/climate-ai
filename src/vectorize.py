@@ -1,3 +1,4 @@
+import logging
 from .embedders.e5BaseV2 import (
     vectorize as vectorize_e5BaseV2,
     search as search_e5BaseV2,
@@ -7,10 +8,15 @@ from .database_adapter import get_embedding_rows, get_document, store_chunks
 
 
 def embed(args):
+    logging.info("Running 'embed'…")
+    logging.info("Retrieving document…")
     text, document_id = get_document(args.name, args.bank)
 
+    logging.info("Chunkifying file…")
     chunks = chunkify(text)
+    logging.info(f"Embedding {len(chunks)} chunks…")
     vectors = vectorize_e5BaseV2(chunks=chunks)
+    logging.info("Storing chunks with vectors…")
     store_chunks(chunks=chunks, vectors=vectors, document_id=document_id)
 
 
@@ -29,6 +35,8 @@ def chunkify(text):
 
 
 def search(bank, query):
+    logging.info("Retrieving all embeddings…")
     embedding_rows = get_embedding_rows(bank)
+    # logging.info(f"Searching for nearest neighbors in {len(embedding_rows)} embeddings.")
     results = search_e5BaseV2(embedding_rows, query)
     return results

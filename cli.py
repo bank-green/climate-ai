@@ -1,8 +1,17 @@
-import argparse
-
 from dotenv import load_dotenv
+import sys
+import argparse
+import logging
 
 load_dotenv()
+logging.basicConfig(
+    level=logging.DEBUG,
+    stream=sys.stdout,
+    format="%(asctime)s %(message)s",
+    datefmt="%H:%M:%S",
+)
+logging.info("Starting program…")
+
 
 from src.store import store
 from src.vectorize import embed
@@ -21,6 +30,7 @@ parser_store = subparsers.add_parser("store")
 parser_store.add_argument("--file")
 parser_store.add_argument("--name")
 parser_store.add_argument("--bank")
+parser_store.add_argument("--list", action="store_true")
 parser_store.set_defaults(func=store)
 
 parser_store = subparsers.add_parser("embed")
@@ -34,4 +44,6 @@ parser_store.add_argument("--query", required=True)
 parser_store.set_defaults(func=query)
 
 args = parser.parse_args()
+
 args.func(args)
+logging.info("Done.")

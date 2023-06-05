@@ -1,13 +1,16 @@
 import psycopg2
-from psycopg2 import extras
 import os
+from psycopg2 import extras
+import logging
 
+logging.info(f"Starting DB connection…")
 conn = psycopg2.connect(
     host=os.environ["POSTGRES_HOST"],
     dbname=os.environ["POSTGRES_DBNAME"],
     user=os.environ["POSTGRES_USER"],
     password=os.environ["POSTGRES_PASSWORD"],
 )
+logging.info(f"Connected to DB.")
 
 conn.set_session(autocommit=True)
 
@@ -53,3 +56,11 @@ def get_embedding_rows(bank):
     )
     embedding_rows = cur.fetchall()
     return embedding_rows
+
+
+def list_documents():
+    cur = conn.cursor()
+
+    cur.execute("SELECT name, bank FROM documents")
+    documents = cur.fetchall()
+    return documents
