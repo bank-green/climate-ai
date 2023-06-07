@@ -2,7 +2,8 @@ Currently working commands:
 ```
 python cli.py store --bank the_co_operative_bank --name productpage --file docs/coop-products.html
 
-python cli.py embed --bank the_co_operative_bank --name productpage  
+python cli.py store --bank the_co_operative_bank --name productpage --no-embedding
+python cli.py store --bank the_co_operative_bank --name productpage --embedding-only
 
 python cli.py query --bank the_co_operative_bank --query "Does this bank offer free checking accounts?"
 
