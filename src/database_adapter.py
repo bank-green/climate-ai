@@ -12,6 +12,7 @@ conn = psycopg2.connect(
 )
 logging.info(f"Connected to DB.")
 
+
 conn.set_session(autocommit=True)
 
 
@@ -20,7 +21,7 @@ def store_document(file, text, name, bank):
 
     # not storing the binary file yet
     cur.execute(
-        'INSERT INTO documents ("bank", "file", "name", "text") VALUES (%s, %s, %s, %s)',
+        'INSERT INTO documents ("bank_tag", "file", "name", "parsed_text") VALUES (%s, %s, %s, %s)',
         (bank, None, name, text),
     )
 
@@ -28,7 +29,7 @@ def store_document(file, text, name, bank):
 def get_document(name, bank):
     cur = conn.cursor()
     cur.execute(
-        "SELECT * FROM documents WHERE name = %s AND bank = %s",
+        "SELECT * FROM documents WHERE name = %s AND bank_tag = %s",
         (name, bank),
     )
     x = cur.fetchone()
@@ -51,7 +52,7 @@ def get_embedding_rows(bank):
     cur = conn.cursor()
 
     cur.execute(
-        "SELECT * FROM embeddings e INNER JOIN documents d ON e.document_id = d.id WHERE d.bank = %s",
+        "SELECT * FROM embeddings e INNER JOIN documents d ON e.document_id = d.id WHERE d.bank_tag = %s",
         (bank,),
     )
     embedding_rows = cur.fetchall()
@@ -61,6 +62,6 @@ def get_embedding_rows(bank):
 def list_documents():
     cur = conn.cursor()
 
-    cur.execute("SELECT name, bank FROM documents")
+    cur.execute("SELECT name, bank_tag FROM documents")
     documents = cur.fetchall()
     return documents

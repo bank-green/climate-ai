@@ -21,7 +21,7 @@ def cli_store(args):
     elif args.embedding_only:
         embed(args.document_name, args.bank)
     else:
-        store_and_embed(args.name, args.bank, args.file)
+        store_and_embed(args.document_name, args.bank, args.file)
 
 
 def cli_query(args):
