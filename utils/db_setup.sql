@@ -40,6 +40,7 @@ CREATE TABLE "public"."questions"
 (
     "id" serial,
     "question" text NOT NULL DEFAULT '',
+    "embedding" vector(768) NOT NULL,
     PRIMARY KEY ("id")
 );
 
