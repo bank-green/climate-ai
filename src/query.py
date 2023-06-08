@@ -12,7 +12,8 @@ def search(bank, query):
     embedding_rows = get_embedding_rows(bank)
     # logging.info(f"Searching for nearest neighbors in {len(embedding_rows)} embeddings.")
     results = search_e5BaseV2(embedding_rows, query)
-    return results
+    chunks = [r[2] for r in results]
+    return chunks
 
 
 def query_by_id(bank, query_id):
@@ -28,9 +29,7 @@ def query_by_new_query(bank, query):
 
     logging.info("Running 'query'…")
     logging.info(f"Getting nearest neighbors.")
-    result_embedding_rows = search(bank, query)
-
-    chunks = [r[2] for r in result_embedding_rows]
+    chunks = search(bank, query)
 
     logging.info(f"Calling API with {len(chunks)} nearest-neighbor chunks…")
     response = call_api(query, chunks)

@@ -25,12 +25,16 @@ def cli_store(args):
 
 
 def cli_query(args):
-    from src.query import query_by_new_query, query_by_id, store_query
+    from src.query import query_by_new_query, query_by_id, store_query, search
 
     if args.query_id:
         query_by_id(args.bank, args.query_id)
     elif args.store_only:
         store_query(args.bank, args.query)
+    elif args.chunks_only:
+        chunks = search(args.bank, args.query)
+        for chunk in chunks:
+            print(f"{chunk}\n\n==========================\n")
     else:
         query_by_new_query(args.bank, args.query)
 
@@ -60,12 +64,15 @@ parser_query.add_argument("--bank", required=True)
 query_group = parser_query.add_mutually_exclusive_group()
 query_group.add_argument("--query")
 query_group.add_argument("--query-id", type=int)
-query_group.add_argument("--store-only", action="store_true", default=False)
+
+store_chunks_only_group = parser_query.add_mutually_exclusive_group()
+store_chunks_only_group.add_argument("--store-only", action="store_true", default=False)
+store_chunks_only_group.add_argument(
+    "--chunks-only", action="store_true", default=False
+)
 parser_query.set_defaults(func=cli_query)
 
 args = parser.parse_args()
-
-
 args.func(args)
 
 logging.info("Done.")
