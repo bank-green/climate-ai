@@ -16,23 +16,23 @@ def search(bank, query):
     return chunks
 
 
-def query_by_id(bank, query_id):
+def query_by_id(bank, question_id):
     raise NotImplementedError()
 
 
-def store_query(bank, query):
+def store_question(bank, question):
     raise NotImplementedError()
 
 
-def query_by_new_query(bank, query):
+def query_by_new_question(bank, question):
     # should first run store_query, then query_by_id
 
     logging.info("Running 'query'…")
     logging.info(f"Getting nearest neighbors.")
-    chunks = search(bank, query)
+    chunks = search(bank, question)
 
     logging.info(f"Calling API with {len(chunks)} nearest-neighbor chunks…")
-    response = call_api(query, chunks)
+    response = call_api(question, chunks)
     logging.info(f"Got response.")
 
     formatted_chunks = "\n------------------------------------------------------------------------\n".join(
@@ -41,7 +41,7 @@ def query_by_new_query(bank, query):
 
     print(
         f"""
-The LLM was given the below excerpts from text about the bank to answer query "{query}"
+The LLM was given the below excerpts from text about the bank to answer query "{question}"
 CHUNKS
 ============
 {formatted_chunks}
@@ -52,7 +52,7 @@ LLM RESPONSE
 
 ============
 
-What is the answer to the question "{query}"?
+What is the answer to the question "{question}"?
 """
     )
     human_answer = input("(Y)es/(N)o: ")
