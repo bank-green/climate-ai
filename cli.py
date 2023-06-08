@@ -16,9 +16,9 @@ logging.info("Starting program…")
 def cli_store(args):
     from src.store import store_and_embed, store, embed
 
-    if args.no_embedding:
+    if args.no_embeddings:
         store(args.document_name, args.bank, args.file)
-    elif args.embedding_only:
+    elif args.embeddings_only:
         embed(args.document_name, args.bank)
     else:
         store_and_embed(args.document_name, args.bank, args.file)
@@ -50,11 +50,13 @@ parser_store.add_argument("--file", type=argparse.FileType("r"))
 parser_store.add_argument("--document-name", required=True)
 parser_store.add_argument("--bank", required=True)
 
-embedding_only_group = parser_store.add_mutually_exclusive_group()
-embedding_only_group.add_argument(
-    "--embedding-only", action="store_true", default=False
+embeddings_only_group = parser_store.add_mutually_exclusive_group()
+embeddings_only_group.add_argument(
+    "--embeddings-only", action="store_true", default=False
 )
-embedding_only_group.add_argument("--no-embedding", action="store_true", default=False)
+embeddings_only_group.add_argument(
+    "--no-embeddings", action="store_true", default=False
+)
 
 parser_store.set_defaults(func=cli_store)
 
