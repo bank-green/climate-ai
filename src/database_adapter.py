@@ -43,7 +43,7 @@ def store_chunks(chunks, vectors, document_id):
     values = [[chunks[i], vectors[i], document_id] for i in range(0, len(chunks))]
     extras.execute_values(
         cur,
-        'INSERT INTO embeddings ("chunk", "embedding", "document_id") VALUES %s',
+        'INSERT INTO chunks ("chunk", "embedding", "document_id") VALUES %s',
         values,
     )
 
@@ -52,7 +52,7 @@ def get_embedding_rows(bank):
     cur = conn.cursor()
 
     cur.execute(
-        "SELECT * FROM embeddings e INNER JOIN documents d ON e.document_id = d.id WHERE d.bank_tag = %s",
+        "SELECT * FROM chunks c INNER JOIN documents d ON c.document_id = d.id WHERE d.bank_tag = %s",
         (bank,),
     )
     embedding_rows = cur.fetchall()
@@ -65,3 +65,25 @@ def list_documents():
     cur.execute("SELECT name, bank_tag FROM documents")
     documents = cur.fetchall()
     return documents
+
+
+# should be changed to pull the embedding directly from the question row eventually
+def get_nearest_neighbor_from_embedding(bank, embedding):
+    logging.info(f"Getting nearest neighbor to embedding: {embedding[:5]}…")
+    cur = conn.cursor()
+    cur.execute(
+        """SELECT * 
+        FROM    chunks c 
+                INNER JOIN documents d ON c.document_id = d.id
+        WHERE
+            d.bank_tag = %s
+        ORDER BY
+            embedding <=> %s
+        LIMIT 3;""",
+        (
+            bank,
+            str(embedding),
+        ),
+    )
+    neighbors = cur.fetchall()
+    return neighbors

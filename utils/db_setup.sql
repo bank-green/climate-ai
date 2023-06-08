@@ -25,7 +25,7 @@ CREATE TABLE "public"."documents"
 
 ALTER TABLE "public"."documents" ADD FOREIGN KEY ("bank_tag") REFERENCES "public"."banks" ("tag") ON UPDATE CASCADE ON DELETE CASCADE;
 
-CREATE TABLE "public"."embeddings"
+CREATE TABLE "public"."chunks"
 (
     "id" serial,
     "document_id" int4 NOT NULL,
@@ -34,7 +34,7 @@ CREATE TABLE "public"."embeddings"
     PRIMARY KEY ("id")
 );
 
-ALTER TABLE "public"."embeddings" ADD FOREIGN KEY ("document_id") REFERENCES "public"."documents" ("id") ON UPDATE CASCADE ON DELETE CASCADE;
+ALTER TABLE "public"."chunks" ADD FOREIGN KEY ("document_id") REFERENCES "public"."documents" ("id") ON UPDATE CASCADE ON DELETE CASCADE;
 
 CREATE TABLE "public"."questions"
 (
@@ -54,13 +54,13 @@ CREATE TABLE "public"."answers"
     PRIMARY KEY ("id")
 );
 
-CREATE TABLE "public"."answers_embeddings"
+CREATE TABLE "public"."answers_chunks"
 (
     "answer_id" int4 NOT NULL,
-    "embedding_id" int4 NOT NULL,
-    PRIMARY KEY ("answer_id", "embedding_id")
+    "chunk_id" int4 NOT NULL,
+    PRIMARY KEY ("answer_id", "chunk_id")
 );
 
-ALTER TABLE "public"."answers_embeddings" ADD FOREIGN KEY ("answer_id") REFERENCES "public"."answers" ("id") ON UPDATE CASCADE ON DELETE CASCADE;
+ALTER TABLE "public"."answers_chunks" ADD FOREIGN KEY ("answer_id") REFERENCES "public"."answers" ("id") ON UPDATE CASCADE ON DELETE CASCADE;
 
-ALTER TABLE "public"."answers_embeddings" ADD FOREIGN KEY ("embedding_id") REFERENCES "public"."embeddings" ("id") ON UPDATE CASCADE ON DELETE CASCADE;
+ALTER TABLE "public"."answers_chunks" ADD FOREIGN KEY ("chunk_id") REFERENCES "public"."chunks" ("id") ON UPDATE CASCADE ON DELETE CASCADE;

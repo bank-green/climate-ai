@@ -34,26 +34,14 @@ def vectorize(chunks):
     return embeddings.tolist()
 
 
-def search(embedding_rows, query):
-    embeddings = [
-        r[3][1:-1].split(",") for r in embedding_rows
-    ]  # ugly parsing of the string representation of a vector, this should be done better, figure out what pgvector is doing here
-
-    index = faiss.IndexFlatL2(dimension)
-    index.add(np.array(embeddings))
-
-    query = ["query: " + query]
-
+def embed_question(question):
     # Tokenize the query
     batch_dict = tokenizer(
-        query, max_length=512, padding=True, truncation=True, return_tensors="pt"
+        question, max_length=512, padding=True, truncation=True, return_tensors="pt"
     )
 
     outputs = model(**batch_dict)
-    query_embeddings = average_pool(
+    question_embeddings = average_pool(
         outputs.last_hidden_state, batch_dict["attention_mask"]
     )
-
-    d, i = index.search(query_embeddings.detach().numpy(), 4)
-
-    return [embedding_rows[x] for x in i[0]]
+    return question_embeddings

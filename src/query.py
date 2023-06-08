@@ -1,18 +1,16 @@
 import logging
 from .openai_adapter import call_api
-from .embedders.e5BaseV2 import (
-    search as search_e5BaseV2,
-)
+from .embedders.e5BaseV2 import embed_question
 
-from .database_adapter import get_embedding_rows
+from .database_adapter import get_embedding_rows, get_nearest_neighbor_from_embedding
 
 
 def search(bank, query):
     logging.info("Retrieving all embeddings…")
-    embedding_rows = get_embedding_rows(bank)
-    # logging.info(f"Searching for nearest neighbors in {len(embedding_rows)} embeddings.")
-    results = search_e5BaseV2(embedding_rows, query)
-    chunks = [r[2] for r in results]
+
+    question_embedding = embed_question(f"query: {query}")
+    results = get_nearest_neighbor_from_embedding(bank, question_embedding.tolist()[0])
+    chunks = [row[2] for row in results]
     return chunks
 
 
