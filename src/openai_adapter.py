@@ -1,7 +1,5 @@
 import os
 import openai
-from pathlib import Path
-from dotenv import load_dotenv
 
 
 openai.organization = os.environ["OPENAI_ORGANISATION"]
