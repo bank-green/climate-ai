@@ -25,18 +25,17 @@ def cli_store(args):
 
 
 def cli_query(args):
-    from src.query import query_by_new_question, query_by_id, store_question, search
+    from src.query import query_by_id, store_question
+    from src.database_adapter import get_questions_with_ids
 
-    if args.question_id:
-        query_by_id(args.bank, args.question_id)
-    elif args.store_only:
-        store_question(args.question)
-    elif args.chunks_only:
-        chunks = search(args.bank, args.question)
-        for chunk in chunks:
-            print(f"{chunk}\n\n==========================\n")
-    else:
-        query_by_new_question(args.bank, args.question)
+    if args.list_questions:
+        question_rows = get_questions_with_ids()
+        for row in question_rows:
+            print(f"ID: {row[0]}\nQUESTION: {row[1]}\n")
+    elif args.question_id:
+        query_by_id(args.bank, args.question_id, args.chunks_only)
+    elif args.new_question:
+        store_question(args.new_question)
 
 
 parser = argparse.ArgumentParser(
@@ -62,16 +61,12 @@ parser_store.set_defaults(func=cli_store)
 
 parser_query = subparsers.add_parser("query")
 parser_query.add_argument("--bank")
+parser_query.add_argument("--list-questions", action="store_true", default=False)
+parser_query.add_argument("--chunks-only", action="store_true", default=False)
 
 query_group = parser_query.add_mutually_exclusive_group()
-query_group.add_argument("--question")
+query_group.add_argument("--new-question")
 query_group.add_argument("--question-id", type=int)
-
-store_chunks_only_group = parser_query.add_mutually_exclusive_group()
-store_chunks_only_group.add_argument("--store-only", action="store_true", default=False)
-store_chunks_only_group.add_argument(
-    "--chunks-only", action="store_true", default=False
-)
 parser_query.set_defaults(func=cli_query)
 
 args = parser.parse_args()

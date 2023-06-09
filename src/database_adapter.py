@@ -100,3 +100,38 @@ def get_nearest_neighbor_from_embedding(bank, embedding):
     )
     neighbors = cur.fetchall()
     return neighbors
+
+
+def get_nearest_neighbors_and_question_from_question_id(bank, question_id):
+    logging.info(f"Getting nearest neighbor to question id {question_id}…")
+    cur = conn.cursor()
+    # we're using the pgvector extension here: https://github.com/pgvector/pgvector
+    cur.execute(
+        """SELECT * 
+        FROM    chunks c 
+                INNER JOIN documents d ON c.document_id = d.id
+        WHERE
+            d.bank_tag = %s
+        ORDER BY
+            embedding <=> (SELECT embedding FROM questions WHERE id = %s)
+        LIMIT 3;""",
+        (
+            bank,
+            question_id,
+        ),
+    )
+    neighbors = cur.fetchall()
+    cur.execute(
+        "SELECT question FROM questions WHERE id = %s",
+        (question_id,),
+    )
+    question = cur.fetchone()
+    return neighbors, question
+
+
+def get_questions_with_ids():
+    logging.info(f"Getting all questions and ids…")
+    cur = conn.cursor()
+    cur.execute("SELECT id, question FROM questions")
+    rows = cur.fetchall()
+    return rows
