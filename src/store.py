@@ -1,8 +1,6 @@
 import logging
 from .database_adapter import store_document, get_document, store_chunks
-from .embedders.e5BaseV2 import (
-    vectorize as vectorize_e5BaseV2,
-)
+from .embedders.e5BaseV2 import embed
 
 
 def store(name, bank, file):
@@ -25,7 +23,7 @@ def chunkify(text):
     return long_chunks
 
 
-def embed(name, bank):
+def chunkify_and_embed(name, bank):
     logging.info("Running 'embed'…")
     logging.info("Retrieving document…")
     text, document_id = get_document(name, bank)
@@ -33,13 +31,13 @@ def embed(name, bank):
     logging.info("Chunkifying file…")
     chunks = chunkify(text)
     logging.info(f"Embedding {len(chunks)} chunks…")
-    vectors = vectorize_e5BaseV2(chunks=chunks)
+    chunks_as_passages = ["passage: " + c for c in chunks]
+    vectors = embed(chunks_as_passages)
     logging.info("Storing chunks with vectors…")
-    store_chunks(chunks=chunks, vectors=vectors, document_id=document_id)
+    store_chunks(chunks=chunks, embeddings=vectors, document_id=document_id)
 
 
-def store_and_embed(name, bank, file):
+def store_and_chunkify_and_embed(name, bank, file):
     logging.info(f"Running 'store'…")
-    # should store the doc to the database
     store(name, bank, file)
-    embed(name, bank)
+    chunkify_and_embed(name, bank)

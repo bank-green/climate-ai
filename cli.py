@@ -14,14 +14,14 @@ logging.info("Starting program…")
 
 
 def cli_store(args):
-    from src.store import store_and_embed, store, embed
+    from src.store import store_and_chunkify_and_embed, store, chunkify_and_embed
 
     if args.no_embeddings:
         store(args.document_name, args.bank, args.file)
     elif args.embeddings_only:
-        embed(args.document_name, args.bank)
+        chunkify_and_embed(args.document_name, args.bank)
     else:
-        store_and_embed(args.document_name, args.bank, args.file)
+        store_and_chunkify_and_embed(args.document_name, args.bank, args.file)
 
 
 def cli_query(args):
@@ -30,7 +30,7 @@ def cli_query(args):
     if args.question_id:
         query_by_id(args.bank, args.question_id)
     elif args.store_only:
-        store_question(args.bank, args.question)
+        store_question(args.question)
     elif args.chunks_only:
         chunks = search(args.bank, args.question)
         for chunk in chunks:
@@ -61,7 +61,7 @@ embeddings_only_group.add_argument(
 parser_store.set_defaults(func=cli_store)
 
 parser_query = subparsers.add_parser("query")
-parser_query.add_argument("--bank", required=True)
+parser_query.add_argument("--bank")
 
 query_group = parser_query.add_mutually_exclusive_group()
 query_group.add_argument("--question")

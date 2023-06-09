@@ -36,11 +36,10 @@ def get_document(name, bank):
     return x[3], x[0]
 
 
-def store_chunks(chunks, vectors, document_id):
-    assert len(chunks) == len(vectors)
+def store_chunks(chunks, embeddings, document_id):
+    assert len(chunks) == len(embeddings)
     cur = conn.cursor()
-
-    values = [[chunks[i], vectors[i], document_id] for i in range(0, len(chunks))]
+    values = [[chunks[i], embeddings[i], document_id] for i in range(0, len(chunks))]
     extras.execute_values(
         cur,
         'INSERT INTO chunks ("chunk", "embedding", "document_id") VALUES %s',
@@ -48,9 +47,22 @@ def store_chunks(chunks, vectors, document_id):
     )
 
 
+def store_questions(questions, embeddings):
+    assert len(questions) == len(embeddings)
+    logging.info(f"Storing {len(questions)} new questions…")
+    cur = conn.cursor()
+    values = [[questions[i], embeddings[i]] for i in range(0, len(questions))]
+    extras.execute_values(
+        cur,
+        'INSERT INTO questions ("question", "embedding") VALUES %s RETURNING id',
+        values,
+    )
+    ids = [row[0] for row in cur.fetchall()]
+    return ids
+
+
 def get_embedding_rows(bank):
     cur = conn.cursor()
-
     cur.execute(
         "SELECT * FROM chunks c INNER JOIN documents d ON c.document_id = d.id WHERE d.bank_tag = %s",
         (bank,),
@@ -71,6 +83,7 @@ def list_documents():
 def get_nearest_neighbor_from_embedding(bank, embedding):
     logging.info(f"Getting nearest neighbor to embedding: {embedding[:5]}…")
     cur = conn.cursor()
+    # we're using the pgvector extension here: https://github.com/pgvector/pgvector
     cur.execute(
         """SELECT * 
         FROM    chunks c 

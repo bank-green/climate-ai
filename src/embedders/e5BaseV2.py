@@ -1,12 +1,5 @@
-import os
-import numpy as np
-
-import torch.nn.functional as F
-
-from torch import Tensor, save, load
+from torch import Tensor
 from transformers import AutoTokenizer, AutoModel
-
-import faiss
 
 dimension = 768
 
@@ -20,12 +13,10 @@ tokenizer = AutoTokenizer.from_pretrained("intfloat/e5-base-v2")
 model = AutoModel.from_pretrained("intfloat/e5-base-v2")
 
 
-def vectorize(chunks):
-    input = ["passage: " + c for c in chunks]
-
+def embed(texts):
     # Tokenize the input texts
     batch_dict = tokenizer(
-        input, max_length=512, padding=True, truncation=True, return_tensors="pt"
+        texts, max_length=512, padding=True, truncation=True, return_tensors="pt"
     )
 
     outputs = model(**batch_dict)

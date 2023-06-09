@@ -1,15 +1,19 @@
 import logging
 from .openai_adapter import call_api
-from .embedders.e5BaseV2 import embed_question
+from .embedders.e5BaseV2 import embed
 
-from .database_adapter import get_embedding_rows, get_nearest_neighbor_from_embedding
+from .database_adapter import (
+    get_embedding_rows,
+    get_nearest_neighbor_from_embedding,
+    store_questions,
+)
 
 
-def search(bank, query):
+def search(bank, question):
     logging.info("Retrieving all embeddings…")
 
-    question_embedding = embed_question(f"query: {query}")
-    results = get_nearest_neighbor_from_embedding(bank, question_embedding.tolist()[0])
+    question_embedding = embed([question])[0]
+    results = get_nearest_neighbor_from_embedding(bank, question_embedding)
     chunks = [row[2] for row in results]
     return chunks
 
@@ -18,8 +22,11 @@ def query_by_id(bank, question_id):
     raise NotImplementedError()
 
 
-def store_question(bank, question):
-    raise NotImplementedError()
+def store_question(question):
+    question_embedding = embed([question])[0]
+    new_question_id = store_questions([question], [question_embedding])
+    print(f"New id: {new_question_id[0]}")
+    return new_question_id[0]
 
 
 def query_by_new_question(bank, question):
