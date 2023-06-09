@@ -1,6 +1,7 @@
 import psycopg2
 import os
 from psycopg2 import extras
+from pgvector.psycopg2 import register_vector
 import logging
 
 logging.info(f"Starting DB connection…")
@@ -14,6 +15,7 @@ logging.info(f"Connected to DB.")
 
 
 conn.set_session(autocommit=True)
+register_vector(conn)
 
 
 def store_document(file, text, name, bank):
@@ -95,7 +97,7 @@ def get_nearest_neighbor_from_embedding(bank, embedding):
         LIMIT 3;""",
         (
             bank,
-            str(embedding),
+            embedding,
         ),
     )
     neighbors = cur.fetchall()
