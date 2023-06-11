@@ -23,16 +23,3 @@ def embed(texts):
     embeddings = average_pool(outputs.last_hidden_state, batch_dict["attention_mask"])
 
     return embeddings.tolist()
-
-
-def embed_question(question):
-    # Tokenize the query
-    batch_dict = tokenizer(
-        question, max_length=512, padding=True, truncation=True, return_tensors="pt"
-    )
-
-    outputs = model(**batch_dict)
-    question_embeddings = average_pool(
-        outputs.last_hidden_state, batch_dict["attention_mask"]
-    )
-    return question_embeddings
