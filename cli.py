@@ -45,7 +45,7 @@ parser = argparse.ArgumentParser(
 subparsers = parser.add_subparsers(required=True)
 
 parser_store = subparsers.add_parser("store")
-parser_store.add_argument("--file", type=argparse.FileType("r"))
+parser_store.add_argument("--file")
 parser_store.add_argument("--document-name", required=True)
 parser_store.add_argument("--bank", required=True)
 

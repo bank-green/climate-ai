@@ -1,12 +1,26 @@
 import logging
 from .database_adapter import store_document, get_document, store_chunks
 from .embedders.e5BaseV2 import embed
+import typing
+import fitz
 
 
-def store(name, bank, file):
-    text = file.read()
+def store(name, bank, filename):
+    if filename.endswith(".txt"):
+        logging.info(f"Reading .txt file {filename}…")
+        file = open(filename)
+        text = file.read()
+        file.close()
+    elif filename.endswith(".pdf"):
+        logging.info(f"Parsing .pdf file {filename}…")
+        doc = fitz.open(filename)
+        text = ""
+        for p in range(doc.page_count):
+            text += doc.load_page(p).get_text()
+        doc.close()
     logging.info(f"Storing file…")
-    store_document(file, text, name, bank)
+    with open(filename, "rb") as file:
+        store_document(file, text, name, bank)
 
 
 def chunkify(text):
