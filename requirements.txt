@@ -8,3 +8,4 @@ python-dotenv==1.0.0
 torch==2.0.1
 transformers==4.30.0
 pgvector==0.1.8
+readabilipy==0.2.0

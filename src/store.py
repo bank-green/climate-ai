@@ -1,6 +1,7 @@
 import logging
 from .database_adapter import store_document, get_document, store_chunks
 from .embedders.e5BaseV2 import embed
+from readabilipy import simple_json_from_html_string
 import typing
 import fitz
 
@@ -18,6 +19,14 @@ def store(name, bank, filename):
         for p in range(doc.page_count):
             text += doc.load_page(p).get_text()
         doc.close()
+    elif filename.endswith(".html"):
+        logging.info(f"Parsing .html file {filename}…")
+        file = open(filename)
+        html = file.read()
+        text = simple_json_from_html_string(html)["plain_content"]
+        file.close()
+    else:
+        raise ValueError("Document has unknown ending.")
     logging.info(f"Storing file…")
     with open(filename, "rb") as file:
         store_document(file, text, name, bank)
