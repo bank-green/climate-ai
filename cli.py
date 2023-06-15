@@ -2,6 +2,8 @@ from dotenv import load_dotenv
 import sys
 import argparse
 import logging
+import requests
+import tempfile
 
 load_dotenv()
 logging.basicConfig(
@@ -15,6 +17,16 @@ logging.info("Starting program…")
 
 def cli_store(args):
     from src.store import store_and_chunkify_and_embed, store, chunkify_and_embed
+
+    if args.url:
+        logging.info(f'Downloading from url "{args.url}"…')
+        response = requests.get(args.url)
+        response.raise_for_status()
+        suffix = ".pdf" if args.url.endswith(".pdf") else ".html"
+        tmp = tempfile.NamedTemporaryFile(delete=False, suffix=suffix)
+        tmp.write(response.content)
+        tmp.close()
+        args.file = tmp.name
 
     if args.no_embeddings:
         store(args.document_name, args.bank, args.file)
@@ -45,7 +57,9 @@ parser = argparse.ArgumentParser(
 subparsers = parser.add_subparsers(required=True)
 
 parser_store = subparsers.add_parser("store")
-parser_store.add_argument("--file")
+file_or_url_group = parser_store.add_mutually_exclusive_group()
+file_or_url_group.add_argument("--file")
+file_or_url_group.add_argument("--url")
 parser_store.add_argument("--document-name", required=True)
 parser_store.add_argument("--bank", required=True)
 

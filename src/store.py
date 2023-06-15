@@ -1,6 +1,5 @@
 import logging
 from .database_adapter import store_document, get_document, store_chunks
-from .embedders.e5BaseV2 import embed
 from readabilipy import simple_json_from_html_string
 import typing
 import fitz
@@ -47,6 +46,8 @@ def chunkify(text):
 
 
 def chunkify_and_embed(name, bank):
+    from .embedders.e5BaseV2 import embed
+
     logging.info("Running 'embed'…")
     logging.info("Retrieving document…")
     text, document_id = get_document(name, bank)
