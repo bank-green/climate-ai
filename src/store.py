@@ -22,7 +22,8 @@ def store(name, bank, filename):
         logging.info(f"Parsing .html file {filename}…")
         file = open(filename)
         html = file.read()
-        text = simple_json_from_html_string(html)["plain_content"]
+        text_as_list = simple_json_from_html_string(html)["plain_text"]
+        text = "\n\n".join([e["text"] for e in text_as_list])
         file.close()
     else:
         raise ValueError("Document has unknown ending.")
