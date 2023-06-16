@@ -1,5 +1,5 @@
 import logging
-from .database_adapter import store_document, get_document, store_chunks
+from .database_adapter import store_document, get_document_text_and_id, store_chunks
 from readabilipy import simple_json_from_html_string
 from .chunkify import chunkify
 import fitz
@@ -37,7 +37,7 @@ def chunkify_and_embed(name, bank):
 
     logging.info("Running 'embed'…")
     logging.info("Retrieving document…")
-    text, document_id = get_document(name, bank)
+    text, document_id = get_document_text_and_id(name, bank)
 
     logging.info("Chunkifying file…")
     chunks = chunkify(text)

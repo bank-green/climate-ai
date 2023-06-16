@@ -24,11 +24,11 @@ def store_document(file, text, name, bank):
     # not storing the binary file yet
     cur.execute(
         'INSERT INTO documents ("bank_tag", "file", "name", "parsed_text") VALUES (%s, %s, %s, %s)',
-        (bank, None, name, text),
+        (bank, file.read(), name, text),
     )
 
 
-def get_document(name, bank):
+def get_document_text_and_id(name, bank):
     cur = conn.cursor()
     cur.execute(
         "SELECT * FROM documents WHERE name = %s AND bank_tag = %s",
@@ -36,6 +36,19 @@ def get_document(name, bank):
     )
     x = cur.fetchone()
     return x[3], x[0]
+
+
+def download_and_save_document(name, bank):
+    logging.info(f"Downloading {name} for {bank}…")
+    cur = conn.cursor()
+    cur.execute(
+        "SELECT name, file FROM documents WHERE name = %s AND bank_tag = %s",
+        (name, bank),
+    )
+    row = cur.fetchone()
+    with open(row[0], "xb") as output:
+        logging.info(f'Saving as "{row[0]}"…')
+        output.write(bytes(row[1]))
 
 
 def store_chunks(chunks, embeddings, document_id):

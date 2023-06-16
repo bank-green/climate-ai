@@ -17,6 +17,11 @@ logging.info("Starting program…")
 
 def cli_store(args):
     from src.store import store_and_chunkify_and_embed, store, chunkify_and_embed
+    from src.database_adapter import download_and_save_document
+
+    if args.download:
+        download_and_save_document(args.document_name, args.bank)
+        return
 
     if args.url:
         logging.info(f'Downloading from url "{args.url}"…')
@@ -62,6 +67,7 @@ file_or_url_group.add_argument("--file")
 file_or_url_group.add_argument("--url")
 parser_store.add_argument("--document-name", required=True)
 parser_store.add_argument("--bank", required=True)
+parser_store.add_argument("--download", action="store_true", default=False)
 
 embeddings_only_group = parser_store.add_mutually_exclusive_group()
 embeddings_only_group.add_argument(
