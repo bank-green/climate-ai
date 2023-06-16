@@ -1,7 +1,7 @@
 import logging
 from .database_adapter import store_document, get_document, store_chunks
 from readabilipy import simple_json_from_html_string
-import typing
+from .chunkify import chunkify
 import fitz
 
 
@@ -30,20 +30,6 @@ def store(name, bank, filename):
     logging.info(f"Storing file…")
     with open(filename, "rb") as file:
         store_document(file, text, name, bank)
-
-
-def chunkify(text):
-    # simply cuts up the text into equal pieces
-
-    # separator = "\n\n"
-    # min_chunk_length = 40
-    # chunks = text.split(separator)
-    # long_chunks = [chunk for chunk in chunks if len(chunk) > min_chunk_length]
-    chunk_size = 1000
-    long_chunks = [
-        text[start : start + chunk_size] for start in range(0, len(text), chunk_size)
-    ]
-    return long_chunks
 
 
 def chunkify_and_embed(name, bank):
