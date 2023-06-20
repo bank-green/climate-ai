@@ -14,7 +14,7 @@ python cli.py store --bank natwest --name policy --file docs/natwest.txt
 python cli.py store --bank natwest --name policy --file docs/natwest.txt --no-embeddings
 python cli.py store --bank natwest --name policy --file docs/natwest.txt --embeddings-only
 
-python cli.py query --list-questions 'Does this bank give loans to coal-fired power plants?'
+python cli.py query --list-questions
 python cli.py query --bank natwest --new-question 'Does this bank give loans to coal-fired power plants?'
 python cli.py query --bank natwest --question-id 2 --chunks-only
 ```
