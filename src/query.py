@@ -15,11 +15,15 @@ def query_by_id(bank, question_id, chunks_only):
     chunks = [row[2] for row in chunk_rows]
     question = question_row[0]
     if chunks_only:
-        for chunk in chunks:
-            print(f"{chunks}\n\n=================\n")
-        return chunks
+        return {"r_type": "chunks", "chunks": chunks, "question": question}
     else:
-        ask_llm(question, chunks)
+        llm_response = ask_llm(question, chunks)
+        return {
+            "r_type": "llm",
+            "chunks": chunks,
+            "llm_response": llm_response,
+            "question": question,
+        }
 
 
 def store_question(question):
@@ -33,38 +37,4 @@ def ask_llm(question, chunks):
     logging.info(f"Calling API with {len(chunks)} nearest-neighbor chunks…")
     response = call_api(question, chunks)
     logging.info(f"Got response.")
-
-    formatted_chunks = "\n------------------------------------------------------------------------\n".join(
-        chunks
-    )
-
-    print(
-        f"""
-The LLM was given the below excerpts from text about the bank to answer query "{question}"
-CHUNKS
-============
-{formatted_chunks}
-
-LLM RESPONSE
-============
-{response}
-
-============
-
-What is the answer to the question "{question}"?
-"""
-    )
-    human_answer = input("(Y)es/(N)o: ")
-    human_answer_typed = True if human_answer == "Y" else False
-
-    print(
-        f"""
-Did the LLM correctly and clearly answer the question?
-        """
-    )
-    llm_assessment = input("(Y)es/(N)o: ")
-    llm_assessment_typed = True if llm_assessment == "Y" else False
-
-    print(f"Human answer to query: {human_answer_typed}")
-    print(f"Did LLM get it right: {llm_assessment_typed}")
-    return human_answer_typed, llm_assessment_typed
+    return response
