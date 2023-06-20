@@ -6,26 +6,18 @@ openai.organization = os.environ["OPENAI_ORGANISATION"]
 openai.api_key = os.environ["OPENAI_API_KEY"]
 
 
-def call_api(query, chunks):
-    system_prompt = "You are a helpful assistant. Your answers are concise. You answer in no more than 4 sentences, excluding references. You do not use paragraph breaks. Your answer ends with a clear 'YES' or 'NO'."
-    user_prompt = "I am providing you with various excerpts of text describing the feature offerings or sustainability policies of a bank. I will ask you about what financing it allows or forbids. If financing for a company or project is not explicitly prohibited, then consider it allowed."
+def call_api(question, chunks):
+    system_prompt = """You will be provided with exerpts from a bank's sustainability policy delimited by triple quotes and a question. Your task is to answer the question using only the provided excerpts and to cite the passage(s) of the document used to answer the question. If the excerpts do contain the information needed to answer this question then simply write: "Insufficient information." If an answer to the question is provided, it must be annotated with a citation. Use the following format for to cite relevant passages (reference: …)."""
 
-    input_text = "\n\n".join(chunks)
+    chunks_text = '"""' + '"""\n\n"""'.join(chunks) + '"""'
+
+    user_prompt = chunks_text + "\n\n" + "Question: " + question
 
     messages = [
         {"role": "system", "content": system_prompt},
         {
             "role": "user",
             "content": user_prompt,
-        },
-        {
-            "role": "user",
-            "content": input_text,
-        },
-        {"role": "user", "content": query},
-        {
-            "role": "user",
-            "content": "Provide references to the parts of the text you were given that justify your answer. If possible, provide explicit citations. Make sure the sections cited exist in the given texts.",
         },
     ]
     res = openai.ChatCompletion.create(model="gpt-3.5-turbo", messages=messages)
