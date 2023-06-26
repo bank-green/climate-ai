@@ -2,13 +2,13 @@
   <div class="grid grid-cols-2 gap-3">
     <div>
       <h1>Question</h1>
-      <select v-model="selectedQuestionId">
+      <select v-model="selectedQuestionId" class="max-w-full">
         <option
           v-for="question in questions"
           :key="question.id"
           :value="question.id"
         >
-          {{ question.text }}
+          {{ question.question }}
         </option>
       </select>
       <button @click="onClickAsk">Ask</button>
@@ -45,21 +45,35 @@
 </template>
 
 <script setup lang="ts">
-const questions = [
-  { id: 1, text: "Sample Question 1" },
-  { id: 2, text: "Sample Question 2" },
-];
+import { z, makeParser } from "@sidebase/nuxt-parse";
+const config = useRuntimeConfig();
+const backend = config.public.backend;
+
 const banks = [
   { tag: "natwest", name: "NatWest" },
   { tag: "rbs", name: "Royal Bank of Scotland" },
 ];
 
 const documents = ["mining", "power"];
+
+const questionsSchema = z.array(
+  z.object({
+    id: z.number(),
+    question: z.string(),
+  })
+);
+
+const { data: questions } = useFetch(`${backend}/api/questions`, {
+  transform: makeParser(questionsSchema),
+  server: false,
+});
+
 const selectedQuestionId = 1;
 const selectedBankTag = banks[0].tag;
 const selectedQuestionText = computed(
-  () => questions.find((q) => q.id === selectedQuestionId)?.text
+  () => questions.value!.find((q) => q.id === selectedQuestionId)?.question
 );
+
 const llmAnswer: Ref<null | string> = ref(null);
 
 function onClickAsk() {
