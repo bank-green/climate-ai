@@ -100,8 +100,8 @@ def get_nearest_neighbor_from_embedding(bank, embedding):
     cur = conn.cursor()
     # we're using the pgvector extension here: https://github.com/pgvector/pgvector
     cur.execute(
-        """SELECT * 
-        FROM    chunks c 
+        """SELECT *
+        FROM    chunks c
                 INNER JOIN documents d ON c.document_id = d.id
         WHERE
             d.bank_tag = %s
@@ -122,8 +122,8 @@ def get_nearest_neighbors_and_question_from_question_id(bank, question_id):
     cur = conn.cursor()
     # we're using the pgvector extension here: https://github.com/pgvector/pgvector
     cur.execute(
-        """SELECT * 
-        FROM    chunks c 
+        """SELECT *
+        FROM    chunks c
                 INNER JOIN documents d ON c.document_id = d.id
         WHERE
             d.bank_tag = %s

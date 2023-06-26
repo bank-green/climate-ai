@@ -15,6 +15,47 @@ logging.basicConfig(
 logging.info("Starting program…")
 
 
+def cli_render_chunk_response(response):
+    for chunk in response["chunks"]:
+        print(f"{chunk}\n\n=================\n")
+
+
+def cli_render_llm_response(response):
+    formatted_chunks = "\n------------------------------------------------------------------------\n".join(
+        response["chunks"]
+    )
+    print(
+        f"""
+The LLM was given the below excerpts from text about the bank to answer query "{response['question']}"
+CHUNKS
+============
+{formatted_chunks}
+
+LLM RESPONSE
+============
+{response['llm_response']}
+
+============
+
+What is the answer to the question "{response['question']}"?
+"""
+    )
+    human_answer = input("(Y)es/(N)o: ")
+    human_answer_typed = True if human_answer == "Y" else False
+
+    print(
+        f"""
+Did the LLM correctly and clearly answer the question?
+"""
+    )
+    llm_assessment = input("(Y)es/(N)o: ")
+    llm_assessment_typed = True if llm_assessment == "Y" else False
+
+    print(f"Human answer to query: {human_answer_typed}")
+    print(f"Did LLM get it right: {llm_assessment_typed}")
+    return human_answer_typed, llm_assessment_typed
+
+
 def cli_store(args):
     from src.store import store_and_chunkify_and_embed, store, chunkify_and_embed
     from src.database_adapter import download_and_save_document
@@ -50,7 +91,11 @@ def cli_query(args):
         for row in question_rows:
             print(f"ID: {row[0]}\nQUESTION: {row[1]}\n")
     elif args.question_id:
-        query_by_id(args.bank, args.question_id, args.chunks_only)
+        response = query_by_id(args.bank, args.question_id, args.chunks_only)
+        if response["r_type"] == "chunks":
+            cli_render_chunk_response(response)
+        elif response["r_type"] == "llm":
+            cli_render_llm_response(response)
     elif args.new_question:
         store_question(args.new_question)
 
