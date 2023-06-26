@@ -70,7 +70,6 @@ def homogenize_chunks(chunks):
 
 def chunkify(text):
     by_newlines = split_by_newlines(text)
-    print("by newlines", len(by_newlines))
     homogenized = homogenize_chunks(by_newlines)
     for c in homogenized:
         print(len(c))

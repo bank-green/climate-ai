@@ -66,7 +66,7 @@ def api_ask_question():
     question_id = request.json["questionId"]
     bank = request.json["bank"]
     response_dict = query_by_id(bank, question_id)
-    return jsonify({"response": response_dict["llm_response"]})
+    return jsonify({"response": response_dict["llm_response"], "chunks": response_dict["chunks"]})
 
 
 if __name__ == "__main__":
