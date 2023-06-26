@@ -32,7 +32,7 @@
     <div>
       <h1>Banks</h1>
       <select v-model="selectedBankTag">
-        <option v-for="bank in banks" :key="bank.tag" :value="bank.name">
+        <option v-for="bank in banks" :key="bank.tag" :value="bank.tag">
           {{ bank.name }}
         </option>
       </select>
@@ -54,7 +54,19 @@ const banks = [
   { tag: "rbs", name: "Royal Bank of Scotland" },
 ];
 
-const documents = ["mining", "power"];
+const selectedBankTag = ref("rbs");
+
+const documentsSchema = z.array(z.string());
+
+const { data: documents } = useAsyncData(
+  "documents",
+  () => $fetch(`${backend}/api/documents/${selectedBankTag.value}`),
+  {
+    transform: makeParser(documentsSchema),
+    server: false,
+    watch: [selectedBankTag],
+  }
+);
 
 const questionsSchema = z.array(
   z.object({
@@ -68,16 +80,32 @@ const { data: questions } = useFetch(`${backend}/api/questions`, {
   server: false,
 });
 
-const selectedQuestionId = 1;
-const selectedBankTag = banks[0].tag;
+const selectedQuestionId = ref(1);
+
 const selectedQuestionText = computed(
-  () => questions.value!.find((q) => q.id === selectedQuestionId)?.question
+  () =>
+    questions.value!.find((q) => q.id === selectedQuestionId.value)?.question
 );
 
-const llmAnswer: Ref<null | string> = ref(null);
+const llmAnswer: Ref<null | string> = ref(
+  `No, the policy prohibits new customer relationships with corporates who explore for, extract or produce coal, including those involved in the exploration and production of raw metal ores. (reference: excerpt under "Mining & Metals Risk Acceptance Criteria define the level of ESE risk the bank is prepared to accept, and our expectations of companies to manage ESE risks. This includes having relevant policies and procedures which demonstrate a good understanding of ESE issues and the capacity to manage these risks through good governance and controls. It also includes a positive track record of managing ESE risks and a commitment to transparency. Our policies reflect applicable national and international laws and take into account good international practice, for example managing climate change. They also incorporate a number of voluntary standards such as the Equator Principles and the UN Global Compact. We also expect our customers to adhere to local and international environmental, social and human rights standards. The policies apply to all legal entities within the Group.")`
+);
 
-function onClickAsk() {
-  llmAnswer.value = "This is where an answer would be!";
+const llmResponseSchema = z.object({
+  response: z.string(),
+});
+
+async function onClickAsk() {
+  const res = makeParser(llmResponseSchema)(
+    await $fetch(`${backend}/api/query`, {
+      method: "POST",
+      body: {
+        questionId: selectedQuestionId.value,
+        bank: selectedBankTag.value,
+      },
+    })
+  );
+  llmAnswer.value = res.response;
 }
 
 type HumanAnswer = "yes" | "no";

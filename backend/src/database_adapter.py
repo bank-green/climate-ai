@@ -86,10 +86,10 @@ def get_embedding_rows(bank):
     return embedding_rows
 
 
-def list_documents():
+def list_documents(bank):
     cur = conn.cursor()
 
-    cur.execute("SELECT name, bank_tag FROM documents")
+    cur.execute("SELECT name FROM documents WHERE bank_tag = %s", (bank,))
     documents = cur.fetchall()
     return documents
 

@@ -8,7 +8,7 @@ from .database_adapter import (
 )
 
 
-def query_by_id(bank, question_id, chunks_only):
+def query_by_id(bank, question_id, chunks_only=False):
     chunk_rows, question_row = get_nearest_neighbors_and_question_from_question_id(
         bank, question_id
     )
