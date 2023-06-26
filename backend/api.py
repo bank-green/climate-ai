@@ -1,4 +1,5 @@
 from flask import Flask, jsonify, request
+from flask_cors import CORS
 from src.query import query_by_id, store_question
 from src.database_adapter import get_questions_with_ids
 
@@ -18,6 +19,7 @@ logging.info("Starting API server...")
 
 
 app = Flask(__name__)
+CORS(app)
 
 
 @app.route("/api/questions", methods=["GET"])

@@ -2,6 +2,7 @@
 # (had to manually add pgvector though)
 
 flask
+flask_cors
 gql==3.4.1
 openai==0.27.8
 psycopg2==2.9.6
