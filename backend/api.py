@@ -3,6 +3,8 @@ from flask_cors import CORS
 from src.query import query_by_id, store_question
 from src.database_adapter import get_questions_with_ids, list_documents
 from src.query import query_by_id
+from src.store import save_from_url, store_and_chunkify_and_embed
+
 import sys
 
 import logging
@@ -49,7 +51,7 @@ def api_get_question(bank, question_id):
 
 @app.route("/api/questions", methods=["POST"])
 def api_store_question():
-    new_question = request.json["new_question"]
+    new_question = request.json["newQuestion"]
     question_in_db = store_question(new_question)
     return jsonify(question_in_db)
 
@@ -67,6 +69,15 @@ def api_ask_question():
     bank = request.json["bank"]
     response_dict = query_by_id(bank, question_id)
     return jsonify({"response": response_dict["llm_response"], "chunks": response_dict["chunks"]})
+
+@app.route("/api/documents", methods=["POST"])
+def api_store_link():
+    url = request.json["url"]
+    bank = request.json["bank"]
+    name = request.json["name"]
+    file = save_from_url(url)
+    store_and_chunkify_and_embed(name, bank, file)
+    return "ok"
 
 
 if __name__ == "__main__":

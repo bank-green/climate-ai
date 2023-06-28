@@ -1,6 +1,12 @@
 <template>
   <div class="flex max-w-full w-full">
     <div class="p-10 flex-initial w-100">
+      <input v-model="newQuestion" type="text" class="border" /><button
+        class="rounded-full bg-slate-300 p-3 m-3"
+        @click="onClickAddQuestion"
+      >
+        Add Question
+      </button>
       <select v-model="selectedQuestionId" class="p-2 w-full">
         <option
           v-for="question in questions"
@@ -87,6 +93,12 @@
       <ul>
         <li v-for="doc in documents" :key="doc">{{ doc }}</li>
       </ul>
+      <input v-model="newDocumentUrl" type="url" class="border" /><button
+        class="rounded-full bg-slate-300 p-3 m-3"
+        @click="onClickAddDocument"
+      >
+        Add Document
+      </button>
     </div>
   </div>
 </template>
@@ -105,7 +117,7 @@ const selectedBankTag = ref("rbs");
 
 const documentsSchema = z.array(z.string());
 
-const { data: documents } = useAsyncData(
+const { data: documents, refresh: refreshDocuments } = useAsyncData(
   "documents",
   () => $fetch(`${backend}/api/documents/${selectedBankTag.value}`),
   {
@@ -122,10 +134,13 @@ const questionsSchema = z.array(
   })
 );
 
-const { data: questions } = useFetch(`${backend}/api/questions`, {
-  transform: makeParser(questionsSchema),
-  server: false,
-});
+const { data: questions, refresh: refreshQuestions } = useFetch(
+  `${backend}/api/questions`,
+  {
+    transform: makeParser(questionsSchema),
+    server: false,
+  }
+);
 
 const defaultSelectedQuestionId = 1;
 const selectedQuestionId = ref(defaultSelectedQuestionId);
@@ -181,5 +196,32 @@ function onSubmit() {
   humanAnswer.value = null;
   llmFeedback.value = null;
   answerState.value = "ready";
+}
+
+const newDocumentUrl = ref("");
+async function onClickAddDocument() {
+  const newDocumentName = newDocumentUrl.value.split("/").at(-1);
+  await $fetch(`${backend}/api/documents`, {
+    method: "POST",
+    body: {
+      url: newDocumentUrl.value,
+      bank: selectedBankTag.value,
+      name: newDocumentName,
+    },
+  });
+  newDocumentUrl.value = "";
+  await refreshDocuments();
+}
+
+const newQuestion = ref("");
+async function onClickAddQuestion() {
+  await $fetch(`${backend}/api/questions`, {
+    method: "POST",
+    body: {
+      newQuestion: newQuestion.value,
+    },
+  });
+  newDocumentUrl.value = "";
+  await refreshQuestions();
 }
 </script>

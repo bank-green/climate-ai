@@ -3,6 +3,8 @@ from .database_adapter import store_document, get_document_text_and_id, store_ch
 from readabilipy import simple_json_from_html_string
 from .chunkify import chunkify
 import fitz
+import requests
+import tempfile
 
 
 def store(name, bank, filename):
@@ -52,3 +54,14 @@ def store_and_chunkify_and_embed(name, bank, file):
     logging.info(f"Running 'store'…")
     store(name, bank, file)
     chunkify_and_embed(name, bank)
+
+
+def save_from_url(url):
+    logging.info(f'Downloading from url "{url}"…')
+    response = requests.get(url)
+    response.raise_for_status()
+    suffix = ".pdf" if url.endswith(".pdf") else ".html"
+    tmp = tempfile.NamedTemporaryFile(delete=False, suffix=suffix)
+    tmp.write(response.content)
+    tmp.close()
+    return tmp.name

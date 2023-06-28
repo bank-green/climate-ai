@@ -2,8 +2,7 @@ from dotenv import load_dotenv
 import sys
 import argparse
 import logging
-import requests
-import tempfile
+
 
 load_dotenv()
 logging.basicConfig(
@@ -57,7 +56,7 @@ Did the LLM correctly and clearly answer the question?
 
 
 def cli_store(args):
-    from src.store import store_and_chunkify_and_embed, store, chunkify_and_embed
+    from src.store import store_and_chunkify_and_embed, store, chunkify_and_embed, save_from_url
     from src.database_adapter import download_and_save_document
 
     if args.download:
@@ -65,13 +64,7 @@ def cli_store(args):
         return
 
     if args.url:
-        logging.info(f'Downloading from url "{args.url}"…')
-        response = requests.get(args.url)
-        response.raise_for_status()
-        suffix = ".pdf" if args.url.endswith(".pdf") else ".html"
-        tmp = tempfile.NamedTemporaryFile(delete=False, suffix=suffix)
-        tmp.write(response.content)
-        tmp.close()
+        
         args.file = tmp.name
 
     if args.no_embeddings:

@@ -31,6 +31,7 @@ def split_by_newlines(text):
 
 
 def find_halfway(chunk):
+    count = 0
     for pos, c in enumerate(chunk):
         if not c.isspace():
             count = count + 1
@@ -39,7 +40,6 @@ def find_halfway(chunk):
 
 
 def split_in_half(chunk):
-    count = 0
     pos = find_halfway(chunk)
     return chunk[:pos], chunk[pos:]
 
