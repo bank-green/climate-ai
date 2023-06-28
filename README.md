@@ -1,5 +1,5 @@
 # Setup
-The setup expects `virtualenv` and `npm` to be installed.
+The setup expects `virtualenv`, `make`, and `npm` to be installed.
 ```
 make init
 make run
