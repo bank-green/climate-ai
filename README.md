@@ -1,12 +1,12 @@
 # Setup
 ```
-source venv/bin/activate
-pip install -r requirements.txt
+make init
+make run
 ```
 
 When you run your first command, things might take a while longr as HuggingFace has to download our embedding model that is not installed as part of the module.
 
-# Basic Commands
+# Basic Backend Commands
 
 Currently working commands:
 ```
