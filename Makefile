@@ -1,18 +1,26 @@
+SHELL := /bin/bash
+
 init-frontend:
 	npm install -C frontend
 
 init-backend:
-	virtualenv backend/venv
-	. backend/venv/bin/activate; pip install -r backend/requirements.txt
+	source backend/venv/bin/activate \
+	pip install -r backend/requirements.txt
 
 init:
-	make init-backend & make init-frontend
+	echo "Installing backend requirements…"
+	make init-backend
+	echo "Installing frontend requirements…"
+	make init-frontend
+	echo "Done installing!"
 
 run-frontend:
-	npx nuxi dev frontend
+	cd frontend \
+	npx nuxi dev
 
 run-backend:
-	. backend/venv/bin/activate; python backend/api.py
+	source backend/venv/bin/activate \
+	python backend/api.py
 
 run:
 	make run-backend & make run-frontend
