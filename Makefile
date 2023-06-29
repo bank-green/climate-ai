@@ -4,6 +4,7 @@ init-frontend:
 	npm install -C frontend
 
 init-backend:
+	virtualenv backend/venv
 	source backend/venv/bin/activate; \
 	pip install -r backend/requirements.txt
 
