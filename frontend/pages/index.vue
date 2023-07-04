@@ -1,12 +1,6 @@
 <template>
     <div class="flex max-w-full w-full">
       <div class="p-10 flex-initial w-100">
-        <input v-model="newQuestion" type="text" class="border" /><button
-          class="rounded-full bg-slate-300 p-3 m-3"
-          @click="onClickAddQuestion"
-        >
-          Add Question
-        </button>
         <select v-model="selectedQuestionId" class="p-2 w-full">
           <option
             v-for="question in questions"
@@ -213,16 +207,5 @@
     await refreshDocuments();
   }
   
-  const newQuestion = ref("");
-  async function onClickAddQuestion() {
-    await $fetch(`${backend}/api/questions`, {
-      method: "POST",
-      body: {
-        newQuestion: newQuestion.value,
-      },
-    });
-    newDocumentUrl.value = "";
-    await refreshQuestions();
-  }
-  </script>
+</script>
   

@@ -46,13 +46,13 @@ const { data: questions, refresh: refreshQuestions } = useFetch<Question[]>(
 const newQuestion = ref("");
 
 async function onClickAddQuestion() {
-  console.log("click")
-  // await $fetch(`${backend}/api/questions`, {
-  //   method: "POST",
-  //   body: {
-  //     newQuestion: newQuestion.value,
-  //   },
-  // });
-  // await refreshQuestions();
+  await $fetch(`${backend}/api/questions`, {
+    method: "POST",
+    body: {
+      newQuestion: newQuestion.value,
+    },
+  });
+  newQuestion.value = "";
+  await refreshQuestions();
 }
 </script>
