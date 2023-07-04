@@ -5,6 +5,16 @@ export default {
       autoprefixer: {},
     },
   },
+  vue: {
+    compilerOptions: {
+      directiveTransforms: {
+        clickaway: () => ({
+          props: [],
+          needRuntime: true,
+        }),
+      },
+    },
+  },
   css: ["@/assets/css/main.css"],
   runtimeConfig: {
     public: {
