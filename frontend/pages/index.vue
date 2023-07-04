@@ -1,7 +1,14 @@
 <template>
-    <div class="flex max-w-full w-full">
-      <div class="p-10 flex-initial w-100">
-        <select v-model="selectedQuestionId" class="p-2 w-full">
+  <div class="contain mx-auto flex flex-col items-center space-y-6">
+    <div class="flex flex-cols md:flex-rows w-full gap-1">
+      <select v-model="selectedBankTag" class="">
+        <option v-for="bank in banks" :key="bank.tag" :value="bank.tag">
+          {{ bank.name }}
+        </option>
+      </select>
+
+      <select v-model="selectedQuestionId" class="w-3/4">
+          <option :value="-1" disabled selected>Select your option</option>
           <option
             v-for="question in questions"
             :key="question.id"
@@ -10,91 +17,76 @@
             {{ question.question }}
           </option>
         </select>
-        <button class="rounded-full bg-slate-300 p-3 m-3" @click="onClickAsk">
+
+
+        <button class="button-green md:w-36" @click="onClickAsk">
           Ask
         </button>
-        <div v-if="answerState === 'ready'" class="mt-5">
-          <p class="p-10">
-            Please select a bank, select a question, and click "Ask".
-          </p>
-        </div>
-        <div v-else-if="answerState === 'loading'" class="mt-5">
-          <p class="p-10">Waiting for LLM response…</p>
-        </div>
-        <div v-else class="mt-5">
-          <h2 class="text-lg mb-3">Question:</h2>
-          <p class="italic mb-3">{{ selectedQuestionText }}</p>
-          <h2 class="mb-3 text-lg">Text excerpts provided to LLM:</h2>
-          <blockquote
-            v-for="chunk in chunks"
-            :key="chunk"
-            class="whitespace-pre-wrap ml-5 mb-5 text-sm"
-          >
-            {{ chunk }}
-          </blockquote>
-          <h2 class="mb-3 text-lg">LLM Answer</h2>
-          <blockquote class="italic ml-5 mb-3">{{ llmAnswer }}</blockquote>
-  
-          <div v-if="llmAnswer" class="mb-3">
-            <h2 class="mb-3 text-lg">Human Answer</h2>
-            <p class="italic mb-3">{{ selectedQuestionText }}</p>
-            <button
-              class="rounded-full bg-slate-300 p-3 m-3"
-              @click="onHumanAnswerClick('yes')"
-            >
-              Yes
-            </button>
-            <button
-              class="rounded-full bg-slate-300 p-3 m-3"
-              @click="onHumanAnswerClick('no')"
-            >
-              No
-            </button>
-            <span>{{ humanAnswer }}</span>
-          </div>
-          <div v-if="humanAnswer" class="mb-3">
-            <h2 class="mb-3 text-lg">Feedback</h2>
-            <p class="italic mb-3">How did the LLM do?</p>
-            <button
-              class="rounded-full bg-slate-300 p-3 m-3"
-              @click="onLlmFeedback('great')"
-            >
-              Great
-            </button>
-            <button
-              class="rounded-full bg-slate-300 p-3 m-3"
-              @click="onLlmFeedback('poor')"
-            >
-              Poor
-            </button>
-            <span>{{ llmFeedback }}</span>
-          </div>
-          <div v-if="llmFeedback">
-            <h2 class="mb-3 text-lg">Submit</h2>
-            <button class="rounded-full bg-slate-300 p-3 m-3" @click="onSubmit">
-              Submit
-            </button>
-          </div>
-        </div>
-      </div>
-      <div class="p-10 flex-none w-200">
-        <select v-model="selectedBankTag" class="w-full p-3">
-          <option v-for="bank in banks" :key="bank.tag" :value="bank.tag">
-            {{ bank.name }}
-          </option>
-        </select>
-        <h2 class="text-lg">Documents</h2>
-        <ul>
-          <li v-for="doc in documents" :key="doc">{{ doc }}</li>
-        </ul>
-        <input v-model="newDocumentUrl" type="url" class="border" /><button
+    </div>
+    <div v-if="answerState === 'ready'">
+      <p class="p-10">
+        Please select a bank, select a question, and click "Ask".
+      </p>
+    </div>
+    <div v-else-if="answerState === 'loading'">
+      <p class="p-10">Waiting for LLM response…</p>
+    </div>
+    <div v-else class="rounded-xl bg-white p-6 scroll-mt-32" id="answer">
+      <h2 class="text-lg mb-3">Question:</h2>
+      <p class="italic mb-3">{{ selectedQuestionText }}</p>
+      <h2 class="mb-3 text-lg">Text excerpts provided to LLM:</h2>
+      <blockquote
+        v-for="chunk in chunks"
+        :key="chunk"
+        class="whitespace-pre-wrap ml-5 mb-5 text-sm"
+      >
+        {{ chunk }}
+      </blockquote>
+      <h2 class="mb-3 text-lg">LLM Answer</h2>
+      <blockquote class="italic ml-5 mb-3">{{ llmAnswer }}</blockquote>
+
+      <div v-if="llmAnswer" class="mb-3">
+        <h2 class="mb-3 text-lg">Human Answer</h2>
+        <p class="italic mb-3">{{ selectedQuestionText }}</p>
+        <button
           class="rounded-full bg-slate-300 p-3 m-3"
-          @click="onClickAddDocument"
+          @click="onHumanAnswerClick('yes')"
         >
-          Add Document
+          Yes
+        </button>
+        <button
+          class="rounded-full bg-slate-300 p-3 m-3"
+          @click="onHumanAnswerClick('no')"
+        >
+          No
+        </button>
+        <span>{{ humanAnswer }}</span>
+      </div>
+      <div v-if="humanAnswer" class="mb-3">
+        <h2 class="mb-3 text-lg">Feedback</h2>
+        <p class="italic mb-3">How did the LLM do?</p>
+        <button
+          class="rounded-full bg-slate-300 p-3 m-3"
+          @click="onLlmFeedback('great')"
+        >
+          Great
+        </button>
+        <button
+          class="rounded-full bg-slate-300 p-3 m-3"
+          @click="onLlmFeedback('poor')"
+        >
+          Poor
+        </button>
+        <span>{{ llmFeedback }}</span>
+      </div>
+      <div v-if="llmFeedback">
+        <h2 class="mb-3 text-lg">Submit</h2>
+        <button class="rounded-full bg-slate-300 p-3 m-3" @click="onSubmit">
+          Submit
         </button>
       </div>
     </div>
+  </div>
   </template>
   
   <script setup lang="ts">
@@ -128,7 +120,7 @@
     })
   );
   
-  const { data: questions, refresh: refreshQuestions } = useFetch(
+  const { data: questions } = useFetch(
     `${backend}/api/questions`,
     {
       transform: makeParser(questionsSchema),
@@ -136,7 +128,7 @@
     }
   );
   
-  const defaultSelectedQuestionId = 1;
+  const defaultSelectedQuestionId = -1;
   const selectedQuestionId = ref(defaultSelectedQuestionId);
   const selectedQuestionText = computed(
     () =>
@@ -171,6 +163,9 @@
     llmAnswer.value = res.response;
     chunks.value = res.chunks;
     answerState.value = "done";
+    nextTick(() => {
+      document.getElementById("answer")?.scrollIntoView();
+    });
   }
   
   type HumanAnswer = "yes" | "no";
@@ -190,21 +185,6 @@
     humanAnswer.value = null;
     llmFeedback.value = null;
     answerState.value = "ready";
-  }
-  
-  const newDocumentUrl = ref("");
-  async function onClickAddDocument() {
-    const newDocumentName = newDocumentUrl.value.split("/").at(-1);
-    await $fetch(`${backend}/api/documents`, {
-      method: "POST",
-      body: {
-        url: newDocumentUrl.value,
-        bank: selectedBankTag.value,
-        name: newDocumentName,
-      },
-    });
-    newDocumentUrl.value = "";
-    await refreshDocuments();
   }
   
 </script>

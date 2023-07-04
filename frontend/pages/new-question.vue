@@ -1,5 +1,5 @@
 <template>
-    <div class="container mx-auto flex flex-col items-center space-y-12">
+    <div class="contain mx-auto flex flex-col items-center space-y-12">
         
         <h1 class="text-4xl font-semibold">New Question</h1>
         <div class="flex flex-col md:flex-row gap-2 w-full">

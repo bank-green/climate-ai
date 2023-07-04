@@ -1,5 +1,5 @@
 <template>
-    <div class="container mx-auto flex flex-col space-y-12">
+    <div class="contain mx-auto flex flex-col space-y-12">
         <h1 class="text-4xl font-semibold text-center">New Document</h1>
       <div class="p-10 flex-none w-200 space-y-4">
         <select v-model="selectedBankTag" class="w-full p-3">
