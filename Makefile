@@ -16,11 +16,11 @@ init:
 	echo "Done installing!"
 
 run-frontend:
-	cd frontend; \
+	cd frontend;
 	npx nuxi dev
 
 run-backend:
-	source backend/venv/bin/activate; \
+	source backend/venv/bin/activate;
 	python backend/api.py
 
 run:
