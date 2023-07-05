@@ -6,10 +6,11 @@ flask_cors
 PyMuPDF
 gql==3.4.1
 openai==0.27.8
-psycopg2==2.9.6
+psycopg2-binary
 python-dotenv==1.0.0
 torch==2.0.1
 transformers==4.30.0
 pgvector==0.1.8
 readabilipy==0.2.0
 requests==2.31.0
+gunicorn
