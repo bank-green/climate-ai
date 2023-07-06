@@ -150,3 +150,10 @@ def get_questions_with_ids():
     cur.execute("SELECT id, question FROM questions")
     rows = cur.fetchall()
     return rows
+
+def list_banks():
+    logging.info(f"Getting banks…")
+    cur = conn.cursor()
+    cur.execute("SELECT tag, name FROM banks")
+    rows = cur.fetchall()
+    return rows

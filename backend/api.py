@@ -1,7 +1,7 @@
 from flask import Flask, jsonify, request
 from flask_cors import CORS
 from src.query import query_by_id, store_question
-from src.database_adapter import get_questions_with_ids, list_documents
+from src.database_adapter import get_questions_with_ids, list_documents, list_banks
 from src.query import query_by_id
 from src.store import save_from_url, store_and_chunkify_and_embed
 
@@ -78,6 +78,12 @@ def api_store_link():
     file = save_from_url(url)
     store_and_chunkify_and_embed(name, bank, file)
     return "ok"
+
+@app.route("/api/banks", methods=["GET"])
+def api_list_banks():
+    bank_rows = list_banks()
+    banks = [{"tag": row[0], "name": row[1]} for row in bank_rows]
+    return jsonify(banks)
 
 
 if __name__ == "__main__":
